@@ -1,0 +1,97 @@
+#navbarNav {
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.nav-item {
+    display: inline-block;
+    float: none;
+}
+
+.btn-secondary
+{
+    color:white;
+}
+
+.foodCard
+{
+    max-width: 500px;
+}
+
+/*things related to the search field*/
+#flex-search-field
+{
+    /*includes flex-search-area and button*/
+    display:flex;
+    flex-direction: row; /*itens on row*/
+    gap:10px;
+    padding:5px;
+}
+
+#flex-search-area
+{
+    /*includes image and input*/
+    display:flex;
+    flex-direction: row; /*itens on row*/
+    align-items: center;
+    background-color: white;
+    border-radius:7px; /*rounded borders*/
+    gap:10px;
+}
+
+#flex-search-area i
+{
+    padding:10px;
+}
+
+#flex-search-area input
+{
+    border:none; /*my input won't have any border,
+    causing the impression that he merged with the
+    flex-search-field just because this div is white just like
+    the input background*/
+    width:100%; /*to make sure the input doesn't come out
+    of the element that surrounds it, even on very small screens...
+    I found it kind of useless, but it could be because my phone is big*/
+}
+
+#flex-search-area input:focus
+{
+    /*this will be of use when the input is selected it
+     must not have a border again*/
+    outline:none;
+}
+
+#flex-search-field button
+{
+    height:100%;
+    padding: 0 20px; /*only on edges*/
+    background-color: transparent; /*transparent color button*/
+    color: #5252e2;
+    border:solid 2px #5252e2; /*border of button will change color*/
+    font-weight: 900;
+    font-size: .7rem; /*Relativa ao tamanho da fonte definido na raiz*/
+    border-radius:7px; /*rounded edges*/
+}
+
+#clearSearchButton:hover
+{
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+    /*on mobile screens...*/
+    .container
+    {
+        padding: 0 10px;
+    }
+}
+
+
+/*@media(min-width:768px){
+    do tamanho 768 adiante eu vou aplicar esse CSS...
+    .foodCardImage
+    {
+        height: 100%;
+    }
+}*/

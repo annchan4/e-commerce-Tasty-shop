@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annchan4 Tasty Shop</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!--swiper, those arrows on the categories navbar-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+</head>
+<body style="background-color: lavenderblush;">
+<div class="w-75 mx-auto">
+    <div class="d-flex flex-row justify-content-between mb-4">
+        <div id="nameShopAddressAndAvailableHours" class="d-flex flex-row">
+            <img style="height:70%" src="img/annchan4LogoSmall.png" alt="">
+            <div class="d-flex flex-column">
+                <h4>Annchan4 Tasty Shop</h1>
+                <p>Fictional street by the end of the corner, 000, city, ST, 00200024</p>
+                <div class="input-group">
+                    <label class="input-group-text" for=""><i id="shopIsOpenSymbol" class="bi bi-circle-fill text-success"></i></label>
+                    <select class="form-select" id="openHours" onchange='makeSelectGoBackToFirstOption()'>
+                        <option id="select_default" selected><p>Open</p></option>
+                        <option id="select_monday">Monday Open 10:00 to 17:00</option>
+                        <option id="select_tuesday">Tueday Open 10:00 to 17:00</option>
+                        <option id="select_wednesday">Wednesday Open 10:00 to 17:00</option>
+                        <option id="select_thursday">Thursday Open 10:00 to 17:00</option>
+                        <option id="select_friday">Friday Open 10:00 to 17:00</option>
+                        <option id="select_saturday">Saturday Open 10:00 to 17:00</option>
+                        <option id="select_sunday">Sunday Open 10:00 to 16:00</option>
+                    </select>
+                </div>
+                    
+            </div>
+        </div>
+        <div id="destinationAddressAndShoppingCart">
+            <p>Deliver by...</p>
+        </div>
+    </div>
+    <div id="searchBar">
+        <div id="flex-search-field">
+            <div id="flex-search-area">
+                <div onclick='changeSearchBarDisplayOnMobile()'><i class="bi bi-search"></i></div>
+                <input type="search" name="" id="searchInput">
+                <button id="searchButton" onclick="filterDisplayedCardsBasedOnWhatUserTypesOnTextfield()">Search</button>
+                <div id="clearSearchButton" onclick='changeSearchBarDisplayOnMobile()'><i class="bi bi-x"></i></div>
+            </div>
+        </div>    
+    </div>
+
+    <!-- 
+    <div class="swiper">
+        <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    </div>-->
+
+
+    <nav id="navbarFoodCategories" class="navbar navbar-expand-lg"> <!--isso eh um flex-->
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" 
+            data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" aria-current="page" href="#">
+                            Promos
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Cakes
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Cookies
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Brownies
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Ice-cream
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Fudges
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Savory Crackers
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Savory Cakes
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Savory Breads
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Savory Muffins
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Pizzas
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Lunch
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Dinner
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Fit
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Smoothies
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link link-light btn btn-secondary" href="#">
+                            Market
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="foodCardGrid col-12 col-lg-6 mb-2">
+                <div class="foodCard card">
+                    <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="img/pb&jmuffookies.jpg" class="foodCardImage img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">Pb&j mufookies</h5>
+                        <p class="card-text">Delicious muffins make with chewy homemade cookie dough filled with homemade peanut butter and grape jam</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="foodCardGrid col-12 col-lg-6 mb-2">
+                <div class="foodCard card">
+                    <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="img/pb&jmuffookies.jpg" class="foodCardImage img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">Pb&j mufoonkies</h5>
+                        <p class="card-text">Delicious muffins make with chewy homemade cookie dough filled with homemade peanut butter and grape jam</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="foodCardGrid col-12 col-lg-6 mb-2">
+                <div class="foodCard card">
+                    <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="img/pb&jmuffookies.jpg" class="foodCardImage img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">Pb&j mufookies</h5>
+                        <p class="card-text">Delicious muffins make with chewy homemade cookie dough filled with homemade peanut butter and grape jam</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
+
+<!--swiper javascript-->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<!--my javascript-->
+<script src="javascript/index.js"></script>
+
+<!--bootstrap javascript-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
