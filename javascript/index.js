@@ -79,12 +79,33 @@ function changeSelectOpenHoursDefault()
 
         select_default.innerHTML = "Closed";
     }
+
+    //finally, we'll add a backgorund color to the option of the selector for the current day
+    var currentDayOption;
+    switch(currentDay == 0)
+    {
+        case 0:
+            currentDayOption = document.querySelector("#select_sunday");
+        case 1:
+            currentDayOption = document.querySelector("#select_monday");
+        case 2:
+            currentDayOption = document.querySelector("#select_tuesday");
+        case 3:
+            currentDayOption = document.querySelector("#select_wednesday");
+        case 4:
+            currentDayOption = document.querySelector("#select_thursday");
+        default:
+            currentDayOption = document.querySelector("#select_friday");
+    }
+
+    currentDayOption.style.backgroundColor = "#CC99CC";
 }
 
 //the select below is the openHours
-function makeSelectGoBackToFirstOption()
+function makeSelectGoBackToFirstOption(selectId)
 {
-    var openHours = document.querySelector("#openHours");
+    selectId = "#" + selectId;
+    var openHours = document.querySelector(selectId);
     var options = openHours.children;
     for(option of options)
     {
@@ -222,10 +243,25 @@ function filterDisplayedCardsBasedOnWhatUserTypesOnTextfield()
     }
 }
 
+//some elements of the header will be removed, some grids or flex will change too
+function adaptShopHeaderToMobile()
+{
+    var screenWidth = Math.max(window. innerWidth);
+    if(screenWidth < 768)
+    {
+        var storeDescription = document.querySelector("#storeDescription");
+        storeDescription.remove();
+
+        var deliveryTimeAndIcon = document.querySelector("#deliveryTimeAndIcon");
+        deliveryTimeAndIcon.remove();
+    }
+}
+
 initializeSwiper();
-//changeSelectOpenHoursDefault();
+changeSelectOpenHoursDefault();
 adaptNavbarCategoriesOnMobile();
 adaptfoodCardImagesToLargerScreens();
 adaptSearchBarToMobile();
+adaptShopHeaderToMobile();
 
 
